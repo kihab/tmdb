@@ -78,3 +78,7 @@ struct MovieDetails: Codable, Identifiable {
         }
     }
 }
+
+extension MovieDetails {
+    static let mock = MovieDetails(id: 1, title: "Test Title", adult: false, backdropPath: "", belongsToCollection: nil, budget: 0, genres: [], homepage: nil, imdbId: nil, originalLanguage: "", originalTitle: "", overview: "", popularity: 1.0, posterPath: "", productionCompanies: [], productionCountries: [], releaseDate: "", revenue: 100, runtime: 100, spokenLanguages: [], status: "", tagline: nil, video: false, voteAverage: 10.0, voteCount: 1)
+}

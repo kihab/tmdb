@@ -23,3 +23,11 @@ struct Movie: Codable, Identifiable {
     }
 }
 
+extension Movie {
+    static let mock = [
+        Movie(id: 1, title: "Test title", overview: "Test Overview", posterPath: "", releaseDate: "", voteAverage: 10.0, backdropPath: ""),
+        Movie(id: 1, title: "Test title", overview: "Test Overview", posterPath: "", releaseDate: "", voteAverage: 10.0, backdropPath: ""),
+        Movie(id: 1, title: "Test title", overview: "Test Overview", posterPath: "", releaseDate: "", voteAverage: 10.0, backdropPath: "")
+    ]
+}
+

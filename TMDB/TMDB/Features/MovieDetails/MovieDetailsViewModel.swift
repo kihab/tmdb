@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class MovieDetailsViewModel: ObservableObject {
-    @Published var movieDetails: MovieDetails?
+    @Published var state: ViewModelState<MovieDetails> = .loading
     private var movieService: MovieServiceProtocol
     private let movieId: Int
     
@@ -19,12 +19,22 @@ class MovieDetailsViewModel: ObservableObject {
         loadMovieDetails()
     }
     
+    var data: (MovieDetails) {
+        switch state {
+        case let .loaded(data):
+            return data
+        default:
+            return MovieDetails.mock
+        }
+    }
+    
     func loadMovieDetails() {
         Task {
             do {
-                self.movieDetails = try await movieService.fetchMovieDetails(movieId: movieId)
+                let movieDetails = try await movieService.fetchMovieDetails(movieId: movieId)
+                state = .loaded(movieDetails)
             } catch {
-                print(error)
+                state = .error(error.localizedDescription)
             }
         }
     }
