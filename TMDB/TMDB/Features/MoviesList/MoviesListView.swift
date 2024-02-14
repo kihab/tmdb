@@ -21,7 +21,6 @@ struct MoviesListView: View {
             Text("Something went wrong, please try again later")
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         default:
-            NavigationView {
                 List(viewModel.data) { movie in
                     NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(movieId: movie.id))) {
                         HStack(spacing: 12) {
@@ -47,12 +46,12 @@ struct MoviesListView: View {
                         }
                     }
                 }
-                .navigationTitle("Trending Movies")
+                .navigationBarTitle("Trending Movies", displayMode: .inline)
                 .onAppear {
                         viewModel.loadTrendingMovies()
                 }
                 .redacted(when: viewModel.state.isLoading())
-            }
+            
         }
 
     }

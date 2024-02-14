@@ -47,8 +47,7 @@ struct MovieDetailsView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
             }
-            .navigationTitle("Movie Details")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle("Movie Details", displayMode: .inline)
             .redacted(when: viewModel.state.isLoading())
         }
 
