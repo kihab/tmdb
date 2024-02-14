@@ -157,8 +157,8 @@
 		07162EA42B77BC8000FC18BC /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
-				07162EA82B77BDCE00FC18BC /* MovieService.swift */,
 				07162EBD2B7AA3E100FC18BC /* MovieServiceProtocol.swift */,
+				07162EA82B77BDCE00FC18BC /* MovieService.swift */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";

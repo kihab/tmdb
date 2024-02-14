@@ -8,6 +8,6 @@
 import Foundation
 
 protocol MovieServiceProtocol {
-    func fetchTrendingMovies() async throws -> [Movie]
+    func fetchTrendingMovies(page: Int) async throws -> [Movie]
     func fetchMovieDetails(movieId: Int) async throws -> MovieDetails
 }

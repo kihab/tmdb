@@ -51,7 +51,6 @@ struct MoviesListView: View {
                         viewModel.loadTrendingMovies()
                 }
                 .redacted(when: viewModel.state.isLoading())
-            
         }
 
     }

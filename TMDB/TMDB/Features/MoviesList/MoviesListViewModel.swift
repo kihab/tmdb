@@ -11,6 +11,8 @@ import Foundation
 class MoviesListViewModel: ObservableObject {
     @Published var state: ViewModelState<[Movie]> = .loading
     private var movieService: MovieServiceProtocol
+    private var currentPage = 1
+    private var canLoadMorePages = true
     
     init(movieService: MovieServiceProtocol = MovieService()) {
         self.movieService = movieService
@@ -30,8 +32,21 @@ class MoviesListViewModel: ObservableObject {
     func loadTrendingMovies() {
         Task {
             do {
-                let trendingMovies = try await movieService.fetchTrendingMovies()
-                state = .loaded(trendingMovies)
+                let trendingMovies = try await movieService.fetchTrendingMovies(page: currentPage)
+                print("COUNT: \(trendingMovies.count)")
+                currentPage = currentPage + 1
+                
+                //refactor to one sentence
+                canLoadMorePages = !trendingMovies.isEmpty
+                if trendingMovies.count < 20 {
+                    canLoadMorePages = false
+                }
+                
+                if case let .loaded(movies) = state {
+                    state = .loaded(movies + trendingMovies)
+                } else {
+                    state = .loaded(trendingMovies)
+                }
             } catch {
                 state = .error(error.localizedDescription)
             }
