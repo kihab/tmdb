@@ -26,6 +26,7 @@
 		07162EC52B7AA5CD00FC18BC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07162EC42B7AA5CD00FC18BC /* HomeViewModel.swift */; };
 		07162EC72B7D3FF100FC18BC /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07162EC62B7D3FF100FC18BC /* ViewModelState.swift */; };
 		07162ECA2B7D449D00FC18BC /* ViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07162EC92B7D449D00FC18BC /* ViewExtention.swift */; };
+		07162ECC2B7E187A00FC18BC /* MovieRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07162ECB2B7E187A00FC18BC /* MovieRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		07162EC42B7AA5CD00FC18BC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		07162EC62B7D3FF100FC18BC /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
 		07162EC92B7D449D00FC18BC /* ViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtention.swift; sourceTree = "<group>"; };
+		07162ECB2B7E187A00FC18BC /* MovieRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 		07162EB42B7AA21600FC18BC /* MoviesList */ = {
 			isa = PBXGroup;
 			children = (
+				07162ECB2B7E187A00FC18BC /* MovieRow.swift */,
 				07162EAA2B77BDFB00FC18BC /* MoviesListView.swift */,
 				07162EA62B77BDA800FC18BC /* MoviesListViewModel.swift */,
 			);
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07162EAF2B77BE8C00FC18BC /* MovieDetailsViewModel.swift in Sources */,
+				07162ECC2B7E187A00FC18BC /* MovieRow.swift in Sources */,
 				07162EBE2B7AA3E100FC18BC /* MovieServiceProtocol.swift in Sources */,
 				07162E782B77BB5B00FC18BC /* HomeView.swift in Sources */,
 				07162ECA2B7D449D00FC18BC /* ViewExtention.swift in Sources */,

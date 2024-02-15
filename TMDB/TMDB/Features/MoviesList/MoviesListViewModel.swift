@@ -16,6 +16,7 @@ class MoviesListViewModel: ObservableObject {
     
     init(movieService: MovieServiceProtocol = MovieService()) {
         self.movieService = movieService
+        loadMoreTrendingMovies(currentItem: nil) // Initial load
     }
     
     var data: ([Movie]) {
@@ -29,24 +30,36 @@ class MoviesListViewModel: ObservableObject {
         }
     }
     
+    func loadMoreTrendingMovies(currentItem: Movie?) {
+        guard let movie = currentItem else {
+            loadTrendingMovies()
+            return
+        }
+        
+        let thresholdIndex = data.index(data.endIndex, offsetBy: -2)
+        if data.firstIndex(where: { $0.id == movie.id }) == thresholdIndex {
+            loadTrendingMovies()
+        }
+    }
+    
     func loadTrendingMovies() {
+        guard canLoadMorePages else { return }
+
         Task {
             do {
                 let trendingMovies = try await movieService.fetchTrendingMovies(page: currentPage)
-                print("COUNT: \(trendingMovies.count)")
-                currentPage = currentPage + 1
                 
-                //refactor to one sentence
-                canLoadMorePages = !trendingMovies.isEmpty
-                if trendingMovies.count < 20 {
+                if trendingMovies.isEmpty || trendingMovies.count < 20 {
                     canLoadMorePages = false
+                } else {
+                    if case let .loaded(movies) = state {
+                        state = .loaded(movies + trendingMovies)
+                    } else {
+                        state = .loaded(trendingMovies)
+                    }
+                    currentPage += 1
                 }
                 
-                if case let .loaded(movies) = state {
-                    state = .loaded(movies + trendingMovies)
-                } else {
-                    state = .loaded(trendingMovies)
-                }
             } catch {
                 state = .error(error.localizedDescription)
             }

@@ -12,8 +12,6 @@ import SwiftUI
 
 struct MoviesListView: View {
     @StateObject private var viewModel: MoviesListViewModel = MoviesListViewModel()
-    
-    let imageBaseURL = "https://image.tmdb.org/t/p/w92" // Adjust the size as needed
 
     var body: some View {
         switch viewModel.state {
@@ -22,35 +20,15 @@ struct MoviesListView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         default:
                 List(viewModel.data) { movie in
-                    NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(movieId: movie.id))) {
-                        HStack(spacing: 12) {
-                            // Movie Thumbnail Image
-                            AsyncImage(url: URL(string: "\(imageBaseURL)\(movie.posterPath )")) { image in
-                                image.resizable()
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .frame(width: 50, height: 75)
-                            .cornerRadius(4)
-                            .aspectRatio(contentMode: .fill)
-
-                            // Movie Title and Overview
-                            VStack(alignment: .leading) {
-                                Text(movie.title)
-                                    .font(.headline)
-                                Text(movie.overview)
-                                    .font(.subheadline)
-                                    .lineLimit(3)
-                                    .foregroundColor(.secondary)
-                            }
+                    MovieRow(movie: movie)
+                        .onAppear {
+                            viewModel.loadMoreTrendingMovies(currentItem: movie)
                         }
-                    }
                 }
-                .navigationBarTitle("Trending Movies", displayMode: .inline)
-                .onAppear {
-                        viewModel.loadTrendingMovies()
-                }
+                //See if you can add this to the item itself.
                 .redacted(when: viewModel.state.isLoading())
+                .navigationBarTitle("Trending Movies", displayMode: .inline)
+
         }
 
     }
