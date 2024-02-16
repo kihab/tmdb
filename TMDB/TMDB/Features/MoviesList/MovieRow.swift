@@ -12,7 +12,7 @@ struct MovieRow: View {
     let imageBaseURL = "https://image.tmdb.org/t/p/w92" // Adjust the size as needed
 
     var body: some View {
-        NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(movieId: movie.id))) {
+        NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(movieId: movie.movieId))) {
             HStack(spacing: 12) {
                 // Movie Thumbnail Image
                 AsyncImage(url: URL(string: "\(imageBaseURL)\(movie.posterPath )")) { image in

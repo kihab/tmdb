@@ -41,27 +41,6 @@ struct MovieService: MovieServiceProtocol {
         return decodedResponse.results
     }
     
-//    func fetchMovieDetails(movieId: Int) async throws -> MovieDetails {
-//        let url = baseURL.appendingPathComponent("movie/\(movieId)")
-//        
-//        var request = URLRequest(url: url, timeoutInterval: 10.0)
-//        request.httpMethod = "GET"
-//        request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
-//        
-//        let (data, response) = try await URLSession.shared.data(from: url)
-//        
-//        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-//            throw NSError(domain: "Error fetching movie details", code: -1, userInfo: nil)
-//        }
-//        
-//        do {
-//            let movieDetails = try JSONDecoder().decode(MovieDetails.self, from: data)
-//            return movieDetails
-//        } catch {
-//            throw NSError(domain: "JSON Parsing Error", code: -1, userInfo: nil)
-//        }
-//    }
-    
     func fetchMovieDetails(movieId: Int) async throws -> MovieDetails {
         let url = baseURL.appendingPathComponent("movie/\(movieId)")
         var request = URLRequest(url: url, timeoutInterval: 10.0)
