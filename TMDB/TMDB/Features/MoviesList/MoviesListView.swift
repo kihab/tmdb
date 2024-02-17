@@ -12,7 +12,7 @@ import SwiftUI
 
 struct MoviesListView: View {
     @StateObject var viewModel: MoviesListViewModel
-
+    
     var body: some View {
         if viewModel.isLoading && viewModel.movies.isEmpty {
             ProgressView()
@@ -35,7 +35,7 @@ struct MoviesListView: View {
                     await viewModel.loadMoreTrendingMovies(currentItem: nil)
                 }
             }
-            .navigationBarTitle("Trending Movies", displayMode: .inline)
+            .navigationBarTitle(Strings.trendingMoviesTitle.localized(), displayMode: .inline)
         }
     }
 }

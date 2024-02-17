@@ -29,21 +29,23 @@ class MoviesListViewModel: ObservableObject {
         }
     }
     
-    func loadTrendingMovies() async {
+    private func loadTrendingMovies() async {
         isLoading = true
         errorMessage = nil
-            do {
-                let trendingMovies = try await movieService.fetchTrendingMovies(page: currentPage)
-                
-                if trendingMovies.isEmpty {
-                    canLoadMorePages = false
-                } else {
-                    movies.append(contentsOf: trendingMovies)
-                    currentPage += 1
-                }
-            } catch {
-                errorMessage = "Failed to load movies. Please try again later."
+        do {
+            let trendingMovies = try await movieService.fetchTrendingMovies(page: currentPage)
+            
+            if trendingMovies.isEmpty {
+                canLoadMorePages = false
+            } else {
+                movies.append(contentsOf: trendingMovies)
+                currentPage += 1
             }
+        } catch {
+            errorMessage = Strings.errorLoadingMovies.localized()
+        }
+        //TODO:: Remove print
+        print("Movie Count: \(movies.count)")
         isLoading = false
     }
 }

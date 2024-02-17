@@ -11,7 +11,7 @@ enum ViewModelState<T: Any> {
     case loading
     case loaded(T)
     case error(String)
-
+    
     func isLoading() -> Bool {
         switch self {
         case .loading:

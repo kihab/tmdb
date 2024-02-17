@@ -9,13 +9,12 @@ import SwiftUI
 
 struct MovieRow: View {
     let movie: Movie
-    let imageBaseURL = "https://image.tmdb.org/t/p/w92"
-
+    
     var body: some View {
         NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(movieId: movie.movieId))) {
             HStack(spacing: 12) {
                 // Movie Thumbnail Image
-                AsyncImage(url: URL(string: "\(imageBaseURL)\(movie.posterPath)")) { image in
+                AsyncImage(url: URL(string: Constants.thumbnailURL + movie.posterPath)) { image in
                     image.resizable()
                 } placeholder: {
                     ProgressView()
@@ -23,7 +22,7 @@ struct MovieRow: View {
                 .frame(width: 50, height: 75)
                 .cornerRadius(4)
                 .aspectRatio(contentMode: .fill)
-
+                
                 // Movie Title and Overview
                 VStack(alignment: .leading) {
                     Text(movie.title)

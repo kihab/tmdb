@@ -19,7 +19,7 @@ struct MovieDetails: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id, title, adult, budget, genres, overview, posterPath = "poster_path", releaseDate = "release_date", runtime
     }
-
+    
     struct Genre: Codable {
         let id: Int
         let name: String
@@ -27,6 +27,8 @@ struct MovieDetails: Codable, Identifiable {
 }
 
 extension MovieDetails {
-    static let mock = MovieDetails(id: 111, title: "Test Movie Details", adult: false, budget: 100, genres: [Genre(id: 1, name: "")],
-                                   overview: "Test Movie Details Overview", posterPath: "Test Movie Details", releaseDate: "200", runtime: nil)
+    static let mock = MovieDetails(id: 111, title: "Test Movie Details", 
+                                   adult: false, budget: 100,
+                                   genres: [Genre(id: 1, name: "")], overview: "Test Movie Details Overview",
+                                   posterPath: "Test Movie Details", releaseDate: "200", runtime: nil)
 }
