@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-
-import SwiftUI
-
 struct MoviesListView: View {
     @StateObject var viewModel: MoviesListViewModel
     
@@ -29,11 +26,6 @@ struct MoviesListView: View {
                             await viewModel.loadMoreTrendingMovies(currentItem: movie)
                         }
                     }
-            }
-            .onAppear{
-                Task {
-                    await viewModel.loadMoreTrendingMovies(currentItem: nil)
-                }
             }
             .navigationBarTitle(Strings.trendingMoviesTitle.localized(), displayMode: .inline)
         }

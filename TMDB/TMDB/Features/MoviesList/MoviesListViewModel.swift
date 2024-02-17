@@ -18,7 +18,10 @@ class MoviesListViewModel: ObservableObject {
     private var canLoadMorePages = true
     
     init(movieService: MovieServiceProtocol) {
-        self.movieService = movieService       
+        self.movieService = movieService
+        Task {
+            await loadMoreTrendingMovies(currentItem: nil)
+        }
     }
     
     func loadMoreTrendingMovies(currentItem: Movie?) async {
