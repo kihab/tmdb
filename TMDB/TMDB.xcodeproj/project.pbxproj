@@ -29,6 +29,7 @@
 		07162ED42B8124CE00FC18BC /* MoviesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07162ED32B8124CE00FC18BC /* MoviesListViewModelTests.swift */; };
 		07162ED62B814EC200FC18BC /* MovieDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07162ED52B814EC200FC18BC /* MovieDetailsViewModelTests.swift */; };
 		07162ED82B81546C00FC18BC /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07162ED72B81546C00FC18BC /* Strings.swift */; };
+		07162EDB2B8158CC00FC18BC /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07162EDA2B8158CC00FC18BC /* MovieResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		07162ED32B8124CE00FC18BC /* MoviesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoviesListViewModelTests.swift; path = TMDBTests/MoviesListViewModelTests.swift; sourceTree = SOURCE_ROOT; };
 		07162ED52B814EC200FC18BC /* MovieDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		07162ED72B81546C00FC18BC /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		07162EDA2B8158CC00FC18BC /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 				07162EA02B77BBCC00FC18BC /* Movie.swift */,
 				07162EC02B7AA5A000FC18BC /* MovieDetails.swift */,
 				07162EC62B7D3FF100FC18BC /* ViewModelState.swift */,
+				07162EDA2B8158CC00FC18BC /* MovieResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				07162EC72B7D3FF100FC18BC /* ViewModelState.swift in Sources */,
 				07162EA92B77BDCE00FC18BC /* MovieService.swift in Sources */,
 				07162EA72B77BDA800FC18BC /* MoviesListViewModel.swift in Sources */,
+				07162EDB2B8158CC00FC18BC /* MovieResponse.swift in Sources */,
 				07162EAB2B77BDFB00FC18BC /* MoviesListView.swift in Sources */,
 				07162EB32B7AA1F700FC18BC /* Constants.swift in Sources */,
 			);
