@@ -47,8 +47,6 @@ class MoviesListViewModel: ObservableObject {
         } catch {
             errorMessage = Strings.errorLoadingMovies.localized()
         }
-        //TODO:: Remove print
-        print("Movie Count: \(movies.count)")
         isLoading = false
     }
 }
