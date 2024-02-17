@@ -47,6 +47,11 @@ struct MovieDetailsView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
             }
+            .onAppear{
+                Task {
+                    await viewModel.loadMovieDetails()
+                }
+            }
             .navigationBarTitle("Movie Details", displayMode: .inline)
             .redacted(when: viewModel.state.isLoading())
         }

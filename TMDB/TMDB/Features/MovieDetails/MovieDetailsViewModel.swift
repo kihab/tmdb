@@ -15,8 +15,7 @@ class MovieDetailsViewModel: ObservableObject {
     
     init(movieService: MovieServiceProtocol = MovieService(), movieId: Int) {
         self.movieService = movieService
-        self.movieId = movieId
-        loadMovieDetails()
+        self.movieId = movieId        
     }
     
     var data: (MovieDetails) {
@@ -28,14 +27,12 @@ class MovieDetailsViewModel: ObservableObject {
         }
     }
     
-    func loadMovieDetails() {
-        Task {
-            do {
-                let movieDetails = try await movieService.fetchMovieDetails(movieId: movieId)
-                state = .loaded(movieDetails)
-            } catch {
-                state = .error(error.localizedDescription)
-            }
+    func loadMovieDetails() async {
+        do {
+            let movieDetails = try await movieService.fetchMovieDetails(movieId: movieId)
+            state = .loaded(movieDetails)
+        } catch {
+            state = .error(error.localizedDescription)
         }
     }
 }

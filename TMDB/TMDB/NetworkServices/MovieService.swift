@@ -9,12 +9,14 @@ import Foundation
 
 struct MovieService: MovieServiceProtocol {
     
-    private let baseURL = URL(string: "https://api.themoviedb.org/3")!
+    private let baseURL = URL(string: "https://api.themoviedb.org/3")
     private let bearerToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMzU1NjViYzMyNDIwNmM0ZmI5MzNhODVmNDBhOWJmYSIsInN1YiI6IjViYzMxYmFlMGUwYTI2NmU1ZDA0NTc1ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lS_9xTda4zfMxxKoZkTxZYW_b2_7T58Oj8uxs0R065s"
     
     func fetchTrendingMovies(page: Int) async throws -> [Movie] {
-        let url = baseURL.appendingPathComponent("discover/movie")
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
+        guard let url = baseURL?.appendingPathComponent("discover/movie"),
+                var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+            throw NSError(domain: "Invalid URL", code: -1, userInfo: nil)
+        }
         components.queryItems = [
             URLQueryItem(name: "page", value: String(page)),
             URLQueryItem(name: "language", value: "en-US"),
@@ -24,8 +26,7 @@ struct MovieService: MovieServiceProtocol {
         guard let finalURL = components.url else {
             throw NSError(domain: "Invalid URL", code: -1, userInfo: nil)
         }
-        
-        
+                
         var request = URLRequest(url: finalURL, timeoutInterval: 10.0)
         request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
@@ -42,7 +43,10 @@ struct MovieService: MovieServiceProtocol {
     }
     
     func fetchMovieDetails(movieId: Int) async throws -> MovieDetails {
-        let url = baseURL.appendingPathComponent("movie/\(movieId)")
+        guard let url = baseURL?.appendingPathComponent("movie/\(movieId)") else {
+            throw NSError(domain: "Invalid URL", code: -1, userInfo: nil)
+        }
+        
         var request = URLRequest(url: url, timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
@@ -66,10 +70,8 @@ struct MovieService: MovieServiceProtocol {
             throw error
         }
     }
-
 }
 
 struct MovieResponse: Codable {
     let results: [Movie]
 }
-

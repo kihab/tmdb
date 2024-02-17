@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A1C5A522-DE03-4871-9670-36AD59CAA2F6"
+            uuid = "10D979F3-F2F4-4CCC-BD95-FDA3EF78EBA5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TMDB/Services/MovieService.swift"
+            filePath = "TMDB/NetworkServices/MovieService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "fetchTrendingMovies()"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "fetchTrendingMovies(page:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
