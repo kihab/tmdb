@@ -12,12 +12,12 @@ class MovieDetailsViewModel: ObservableObject {
     @Published var state: ViewModelState<MovieDetails> = .loading
     private var movieService: MovieServiceProtocol
     private let movieId: Int
-    
+
     init(movieService: MovieServiceProtocol = MovieService(), movieId: Int) {
         self.movieService = movieService
-        self.movieId = movieId        
+        self.movieId = movieId
     }
-    
+
     var data: (MovieDetails) {
         switch state {
         case let .loaded(data):
@@ -26,7 +26,7 @@ class MovieDetailsViewModel: ObservableObject {
             return MovieDetails.mock
         }
     }
-    
+
     func loadMovieDetails() async {
         do {
             let movieDetails = try await movieService.fetchMovieDetails(movieId: movieId)
@@ -36,4 +36,3 @@ class MovieDetailsViewModel: ObservableObject {
         }
     }
 }
-

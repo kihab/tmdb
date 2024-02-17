@@ -12,11 +12,11 @@ enum Strings: String {
     case errorLoadingMovies = "Failed to load movies. Please try again later."
     case errorLoadingDetails = "Something went wrong, please try again later"
     case detailsTitle = "Movie Details"
-    
+
     func localized() -> String {
         NSLocalizedString(rawValue, comment: "")
     }
-    
+
     func localizedWithArguments(arg: String) -> String {
         String(format: localized(), arg)
     }

@@ -12,14 +12,14 @@ class MovieServiceMock: MovieServiceProtocol {
     var moviesToReturn: [Movie] = []
     var movieDetailsToReturn: MovieDetails?
     var errorToThrow: Error?
-    
+
     func fetchTrendingMovies(page: Int) async throws -> [Movie] {
         if let error = errorToThrow {
             throw error
         }
         return moviesToReturn
     }
-    
+
     func fetchMovieDetails(movieId: Int) async throws -> MovieDetails {
         if let error = errorToThrow {
             throw error

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MovieRow: View {
     let movie: Movie
-    
+
     var body: some View {
         NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(movieId: movie.movieId))) {
             HStack(spacing: 12) {
@@ -22,7 +22,7 @@ struct MovieRow: View {
                 .frame(width: 50, height: 75)
                 .cornerRadius(4)
                 .aspectRatio(contentMode: .fill)
-                
+
                 // Movie Title and Overview
                 VStack(alignment: .leading) {
                     Text(movie.title)
@@ -36,4 +36,3 @@ struct MovieRow: View {
         }
     }
 }
-

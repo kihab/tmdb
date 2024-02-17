@@ -9,11 +9,11 @@ import SwiftUI
 
 struct MovieDetailsView: View {
     @ObservedObject var viewModel: MovieDetailsViewModel
-    
+
     var body: some View {
         switch viewModel.state {
-        case .error(_):
-            Text(Strings.errorLoadingDetails.localized())
+        case .error(let error):
+            Text("\(Strings.errorLoadingDetails.localized()) \n\(error.description)")
         default:
             ScrollView {
                 VStack(alignment: .center, spacing: 10) {
@@ -28,12 +28,12 @@ struct MovieDetailsView: View {
                     .cornerRadius(8)
                     .shadow(radius: 7)
                     .padding(.top, 20)
-                    
+
                     // Movie Title and Year
                     Text(viewModel.data.title)
                         .font(.title)
                         .fontWeight(.bold)
-                    
+
                     if let releaseDate = viewModel.data.releaseDate.split(separator: "-").first {
                         Text(String(releaseDate))
                             .font(.subheadline)
@@ -46,7 +46,7 @@ struct MovieDetailsView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
             }
-            .onAppear{
+            .onAppear {
                 Task {
                     await viewModel.loadMovieDetails()
                 }

@@ -12,18 +12,18 @@ class MoviesListViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
-    
+
     private var movieService: MovieServiceProtocol
     private var currentPage = 1
     private var canLoadMorePages = true
-    
+
     init(movieService: MovieServiceProtocol) {
         self.movieService = movieService
         Task {
             await loadMoreTrendingMovies(currentItem: nil)
         }
     }
-    
+
     func loadMoreTrendingMovies(currentItem: Movie?) async {
         guard canLoadMorePages, !isLoading else { return }
         // When at the last item, loading more movies
@@ -31,13 +31,13 @@ class MoviesListViewModel: ObservableObject {
             await loadTrendingMovies()
         }
     }
-    
+
     private func loadTrendingMovies() async {
         isLoading = true
         errorMessage = nil
         do {
             let trendingMovies = try await movieService.fetchTrendingMovies(page: currentPage)
-            
+
             if trendingMovies.isEmpty {
                 canLoadMorePages = false
             } else {

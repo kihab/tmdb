@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MoviesListView: View {
     @StateObject var viewModel: MoviesListViewModel
-    
+
     var body: some View {
         if viewModel.isLoading && viewModel.movies.isEmpty {
             ProgressView()

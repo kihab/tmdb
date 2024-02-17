@@ -13,7 +13,7 @@ struct Movie: Codable, Identifiable {
     let title: String
     let overview: String
     let posterPath: String
-    
+
     enum CodingKeys: String, CodingKey {
         case title, overview
         case movieId = "id"
@@ -31,4 +31,3 @@ extension Movie {
         Movie(movieId: 6, title: "Test title", overview: "Test Overview", posterPath: "Test PosterPath")
     ]
 }
-
